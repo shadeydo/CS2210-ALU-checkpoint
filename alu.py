@@ -98,7 +98,7 @@ class Alu:
             case 0b100:
                 self._op = "SHFT"
             case 0b101:
-                self._op = "SUB"
+                self._op = "XOR"
             case _:
                 raise ValueError("Invalid control signal")
         # Return value is for testing.
