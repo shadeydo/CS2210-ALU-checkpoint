@@ -189,7 +189,7 @@ class Alu:
         a = a & WORD_MASK
         b = b & WORD_MASK
         result = a|b
-        self._update_arith_flags_logic(self, result)
+        self._update_logic_flags(result)
         return result
 
     def _xor(self, a, b):
@@ -198,7 +198,7 @@ class Alu:
         """
         a = a & WORD_MASK
         b = b & WORD_MASK
-        result = (a ^ b) & WORD_MASK
+        result = (a ^ b)
         self._update_logic_flags(result)
         return result
 
