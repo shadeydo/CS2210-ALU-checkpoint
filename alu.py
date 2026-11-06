@@ -214,6 +214,8 @@ class Alu:
         a &= WORD_MASK  # Keep this line as is
 
         # Replace these two lines with a complete implementation
+        bit_out = 0
+
         if b == 0:
             result = a
         elif b & 0x8000: # shft right
