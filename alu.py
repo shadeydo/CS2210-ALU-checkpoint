@@ -165,7 +165,12 @@ class Alu:
         """
         SUB
         """
-        pass  # replace pass with correct implementation
+        a = a & WORD_MASK
+        b = (~b & WORD_MASK) + 1
+        result = (a + b) & WORD_MASK
+        self._update_arith_flags_sub(a, b, result)
+        return result
+
 
     def _and(self, a, b):
         """
