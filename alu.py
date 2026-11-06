@@ -224,7 +224,11 @@ class Alu:
         return x
 
     def _update_logic_flags(self, result):
-        pass  # replace pass with correct implementation
+        if result & (1 << (WORD_SIZE - 1)):
+            self._flags |= N_FLAG
+        if result == 0:
+            self._flags |= Z_FLAG
+
 
     def _update_arith_flags_add(self, a, b, result):
         if result & (1 << (WORD_SIZE - 1)):
