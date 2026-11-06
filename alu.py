@@ -213,17 +213,24 @@ class Alu:
         """
         a &= WORD_MASK  # Keep this line as is
 
+        amount = (b & 0xF)
+
         # Replace these two lines with a complete implementation
+<<<<<<< Updated upstream
         bit_out = 0
 
         if b == 0:
+=======
+        if amount == 0:
+            bit_out = 0
+>>>>>>> Stashed changes
             result = a
         elif b & 0x8000: # shft right
-            bit_out = (a & 0x1)
-            result = a >> (b & 0xF)
+            bit_out = (a >> (amount - 1)) & 1
+            result = (a >> amount) & WORD_MASK
         else: # shft left
-            bit_out = (a & 0x8000)
-            result = a << (b & 0xF)
+            bit_out = (a >> (WORD_SIZE - amount)) & 1
+            result = (a << amount) & WORD_MASK
 
         # Keep these last two lines as they are
         self._update_shift_flags(result, bit_out)
