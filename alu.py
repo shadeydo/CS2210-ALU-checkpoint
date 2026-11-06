@@ -176,11 +176,11 @@ class Alu:
         """
         Bitwise AND
         """
-        # a = a & WORD_MASK
-        # b = b & WORD_MASK
-        # result = (a + b) & WORD_MASK
-        # self._update_arith_flags_add(a, b, result)
-        # return result
+        a = a & WORD_MASK
+        b = b & WORD_MASK
+        result = (a & b) & WORD_MASK
+        self._update_logic_flags(result)
+        return result
 
     def _or(self, a, b):
         """
@@ -192,7 +192,11 @@ class Alu:
         """
         Bitwise XOR
         """
-        pass  # replace pass with correct implementation
+        a = a & WORD_MASK
+        b = b & WORD_MASK
+        result = (a ^ b) & WORD_MASK
+        self._update_logic_flags(result)
+        return result
 
     def _shft(self, a, b):
         """
