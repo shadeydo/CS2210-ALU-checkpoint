@@ -218,7 +218,7 @@ class Alu:
 
         if b == 0:
             result = a
-        elif b >= 0x8000: # shft right
+        elif b & 0x8000: # shft right
             bit_out = (a & 0x1)
             result = a >> (b & 0xF)
         else: # shft left
