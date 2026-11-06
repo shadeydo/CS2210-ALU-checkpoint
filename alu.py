@@ -43,6 +43,7 @@ clears the rest. Flags persist only until the next ALU operation.
 
 CS 2210 Computer Organization
 Clayton Cafiero <cbcafier@uvm.edu>
+test to let me merge
 
 Deirdre Kaniewski and Shade Rothkopf
 """
@@ -270,3 +271,4 @@ class Alu:
 
     def _update_shift_flags(self, result, bit_out):
         pass  # replace pass with correct implementation
+
