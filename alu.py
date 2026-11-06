@@ -216,14 +216,8 @@ class Alu:
         amount = (b & 0xF)
 
         # Replace these two lines with a complete implementation
-<<<<<<< Updated upstream
-        bit_out = 0
-
-        if b == 0:
-=======
         if amount == 0:
             bit_out = 0
->>>>>>> Stashed changes
             result = a
         elif b & 0x8000: # shft right
             bit_out = (a >> (amount - 1)) & 1
