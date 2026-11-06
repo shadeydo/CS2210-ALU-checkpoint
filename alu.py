@@ -182,7 +182,11 @@ class Alu:
         """
         Bitwise OR
         """
-        pass  # replace pass with correct implementation
+        a = a & WORD_MASK
+        b = b & WORD_MASK
+        result = a|b
+        self._update_arith_flags_logic(self, result)
+        return result
 
     def _xor(self, a, b):
         """
