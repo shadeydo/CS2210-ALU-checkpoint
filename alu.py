@@ -198,7 +198,7 @@ class Alu:
         """
         a = a & WORD_MASK
         b = b & WORD_MASK
-        result = a ^ b & WORD_MASK
+        result = (a ^ b) & WORD_MASK
         self._update_logic_flags(result)
         return result
 
