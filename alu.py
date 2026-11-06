@@ -44,7 +44,7 @@ clears the rest. Flags persist only until the next ALU operation.
 CS 2210 Computer Organization
 Clayton Cafiero <cbcafier@uvm.edu>
 
-Deirdre Kaniewski
+Deirdre Kaniewski and Shade Rothkopf
 """
 
 from constants import WORD_MASK, WORD_SIZE
@@ -90,15 +90,15 @@ class Alu:
             case 0b000:
                 self._op = "ADD"
             case 0b001:
-                pass  # replace pass with correct assignment
+                self._op = "SUB"
             case 0b010:
-                pass  # replace pass with correct assignment
+                self._op = "AND"
             case 0b011:
-                pass  # replace pass with correct assignment
+                self._op = "OR"
             case 0b100:
-                pass  # replace pass with correct assignment
-            # Following the pattern above, create a case and
-            # assignment for XOR
+                self._op = "SHFT"
+            case 0b101:
+                self._op = "SUB"
             case _:
                 raise ValueError("Invalid control signal")
         # Return value is for testing.
@@ -176,7 +176,11 @@ class Alu:
         """
         Bitwise AND
         """
-        pass  # replace pass with correct implementation
+        # a = a & WORD_MASK
+        # b = b & WORD_MASK
+        # result = (a + b) & WORD_MASK
+        # self._update_arith_flags_add(a, b, result)
+        # return result
 
     def _or(self, a, b):
         """
