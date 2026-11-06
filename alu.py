@@ -213,9 +213,14 @@ class Alu:
         """
         a &= WORD_MASK  # Keep this line as is
 
-        # Replace these two lines with a complete implementation
-        result = 0
-        bit_out = 0
+        if b == 0:
+            result = a
+        elif b & 0x8000: # shft right
+            bit_out = (a & 0x1)
+            result = a >> (b & 0xF)
+        else: # shft left
+            bit_out = (a & 0x8000)
+            result = a << (b & 0xF)
 
         # Keep these last two lines as they are
         self._update_shift_flags(result, bit_out)
@@ -269,4 +274,9 @@ class Alu:
             self._flags |= V_FLAG
 
     def _update_shift_flags(self, result, bit_out):
-        pass  # replace pass with correct implementation
+        if result & (1 << (WORD_SIZE - 1)):
+            self._flags |= N_FLAG
+        if bit_out != 0:
+            self._flags |= C_FLAG
+        if result == 0:
+            self._flags |= Z_FLAG
