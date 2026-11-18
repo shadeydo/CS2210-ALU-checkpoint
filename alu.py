@@ -47,7 +47,7 @@ Clayton Cafiero <cbcafier@uvm.edu>
 Deirdre Kaniewski and Shade Rothkopf
 """
 
-from constants import WORD_MASK, WORD_SIZE
+from Untitled.constants import WORD_MASK, WORD_SIZE
 
 N_FLAG = 0b1000
 Z_FLAG = 0b0100
