@@ -10,7 +10,7 @@ These do not include special-purpose registers elsewhere in the CPU:
 CS 2210 Computer Organization
 Clayton Cafiero <cbcafier@uvm.edu>
 
-STARTER CODE - REPLACE THIS LINE WITH YOUR NAME HERE
+Deirdre Kaniewski
 """
 
 from constants import WORD_SIZE
@@ -32,8 +32,8 @@ class Register:
         self.value = 0
 
     def read(self):
-        # Just a getter for value. Replace `pass` below.
-        pass
+        # Just a getter for value.
+        return self.value
 
     def write(self, value):
         # Registers themselves don't know about write enable. It's the register
@@ -41,7 +41,10 @@ class Register:
         # should reject values that are too wide (too many bits). Use class
         # constants here, and raise `ValueError` on bad value, otherwise set
         # the value field. Replace `pass` below.
-        pass
+        if value > MAX_VALUE:
+            raise ValueError("Value Too Wide")
+        else:
+            self.value = value
 
     @property
     def raw(self):
@@ -75,7 +78,10 @@ class RegisterFile:
         # Make sure `idx` is in the desired range, otherwise raise an
         # `IndexError` with message "Register index out of bounds!" This
         # method needn't have an explicit return. Replace `pass` below.
-        pass
+        if idx < 0:
+            raise IndexError("Register index out of bounds!")
+        elif idx > NUM_REGISTERS:
+            raise IndexError("Register index out of bounds!")
 
     def _read(self, ra, rb):
         """
