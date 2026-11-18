@@ -9,10 +9,10 @@ does not protect any region; the CPU checks for stack overflow and underflow.
 CS 2210 Computer Organization
 Clayton Cafiero <cbcafier@uvm.edu>
 
-STARTER CODE - REPLACE THIS LINE WITH YOUR NAME HERE
+Shade Rothkopf
 """
 
-from Untitled.constants import WORD_SIZE
+from constants import WORD_SIZE
 
 
 class Memory:
@@ -26,32 +26,56 @@ class Memory:
     def _check_addr(self, address):
         # Make sure address is positive, in the desired range,
         # otherwise raise a `ValueError`. Replace `pass` below.
-        pass
+        if address > 0xFFFF:
+            raise ValueError("Address is over 16 bit range")
+        elif address < 0:
+            raise ValueError("Address cannot be negative")
+
+        return True
 
     def write_enable(self, b):
         # Make sure `b` is a Boolean (hint: use `isinstance()).
         # If not, raise `TypeError`. If OK, then set
+        if not isinstance(b,bool):
+            raise TypeError("Must be a bool")
+        
         # `_write_enable` accordingly. Replace `pass` below.
-        pass
+        self._write_enable = b
 
     def read(self, addr):
         """
         Return 16-bit word from memory (default if never written).
         """
+
         # Make sure `addr` is OK by calling `_check_addr`. If OK, return value
         # from `_cells` or default if never written. (Hint: use `.get()`.)
         # Replace `pass` below.
-        pass
+
+        if self._check_addr(addr):
+            value = self._cells.get(addr)
+            if value:
+                return value
+            else:
+                return self.default
+
 
     def write(self, addr, value):
         """
         Write 16-bit word to memory, masking to 16 bits.
         """
         # Check to see if `_write_enable` is true. If not, raise `RuntimeError`.
+        if not self._write_enable:
+            raise RuntimeError("write_enable is disabled")
+
         # Otherwise, call `_check_addr()`. If OK, write masked value to the
         # selected address, then turn off `_write_enable` when done. Return
         # `True` on success. Replace `pass` below.
-        pass
+
+        self._check_addr(addr)
+
+        self._cells[addr] = value & 0xFFFF
+
+        self._write_enable = False
         return True
 
     def hexdump(self, start=0, stop=None, width=8):

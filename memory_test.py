@@ -7,8 +7,8 @@ Clayton Cafiero <cbcafier@uvm.edu>
 
 import pytest
 
-from Untitled.constants import STACK_BASE
-from Untitled.memory import DataMemory, InstructionMemory, Memory
+from constants import STACK_BASE
+from memory import DataMemory, InstructionMemory, Memory
 
 
 def test_write_out_of_range():

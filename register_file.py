@@ -13,7 +13,7 @@ Clayton Cafiero <cbcafier@uvm.edu>
 STARTER CODE - REPLACE THIS LINE WITH YOUR NAME HERE
 """
 
-from Untitled.constants import WORD_SIZE
+from constants import WORD_SIZE
 
 
 class Register:

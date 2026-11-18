@@ -7,7 +7,7 @@ Clayton Cafiero <cbcafier@uvm.edu>
 
 import pytest
 
-from Untitled.register_file import Register, RegisterFile
+from register_file import Register, RegisterFile
 
 
 # parametrize allows us to list multiple test paramters and have these
