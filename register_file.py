@@ -36,11 +36,6 @@ class Register:
         return self.value
 
     def write(self, value):
-        # Registers themselves don't know about write enable. It's the register
-        # file that serves as gatekeeper in that regard. However, our registers
-        # should reject values that are too wide (too many bits). Use class
-        # constants here, and raise `ValueError` on bad value, otherwise set
-        # the value field. Replace `pass` below.
         if value > MAX_VALUE:
             raise ValueError("Value Too Wide")
         else:
@@ -63,12 +58,7 @@ class RegisterFile:
     NUM_REGISTERS = 8
 
     def __init__(self):
-        # When we instantiate our register file, we should instantiate eight
-        # register objects and include them in a list `self.registers`. Note:
-        # register objects should each get a unique name, R0, R1, R2, etc.
-        # apart from their index in the list. Replace `pass` below.
-        self.registers = ["FIX ME"]
-        pass
+        self.registers = [Register("R0"), Register("R1"), Register("R2"), Register("R3"), Register("R4"), Register("R5"), Register("R6"), Register("R7")]
 
     def _check_index(self, idx):
         """
@@ -108,6 +98,8 @@ class RegisterFile:
         # the first element of which is the value at `ra`, the second element
         # of which is the value at `rb` or `None`. Replace `pass` below.
         pass
+
+
 
     def _write(self, rd, data):
         """This is called if `write_enable` is `True`. This is how we detect
