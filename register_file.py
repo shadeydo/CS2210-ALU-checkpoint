@@ -13,7 +13,7 @@ Clayton Cafiero <cbcafier@uvm.edu>
 Deirdre Kaniewski
 """
 
-from Untitled.constants import WORD_SIZE
+from constants import WORD_SIZE
 
 
 class Register:
